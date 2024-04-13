@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NecessaryStuff</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link rel="shortcut icon" href="{% static 'image/logo5.jpg' %}">
+</head>
+<body>
+    <section id="header">
+        <a href="{% url "add_item" %}"><img src="{% static 'image/logo5.jpg' %}" class="logo" alt=""></a>
+        <h5>Admin Login</h5>
+        <div>
+            <ul id="navbar">
+                <li><a href="{% url "add_item" %}">Add Products</a></li>
+                <li><a href="{% url "view_items" %}" class="active">View Products</a></li>
+                <li><a href="{% url "view_orders" %}">View Orders</a></li>
+                <li><a href="{% url "logout1" %}">Logout</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <div class="pro-container">
+            {% if items %}
+            {% for item in items %}
+            <div class="pro">
+                <img class="profile_img" src="data:image/jpeg;base64,{{ item.image }}">
+                <div class="desc">
+                    <span>{{ item.name }}</span>
+                    
+                    <h5><strong>Quantity : {{item.quantity}}</strong></h5>
+                    <h4>₹ {{ item.price }}</h4>
+                </div>
+                <div>
+                    <form id="deleteForm" action="{% url 'delete_item' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_id" value="{{ item.id }}">
+                        <button type="submit"><i class="fas fa-trash" style="color: #088178;"></i></button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <center>
+            <h4 style="margin-left: 600px; margin-top: 100px;">No product Added.</h4>
+            </center>
+            {% endif %}
+        </div>
+    </section>
+
+</body>
+</html>

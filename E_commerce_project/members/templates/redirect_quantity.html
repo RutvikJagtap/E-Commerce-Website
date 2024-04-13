@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <center>
+    <div style="margin-top: 200px;">
+    <h1>Maximum Product Quantity Availalble is <strong>{{quantity}}</strong></h1>
+    <br><br>
+    <h4 style="color: blue;cursor: pointer;">Redirecting To Cart Page .......</h4>
+    </center>
+    </div>
+    <script>
+        setTimeout(function() {
+            window.location.href = '{% url 'cart' %}';
+        }, 2000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NecessaryStuff</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link rel="shortcut icon" href="{% static 'image/logo5.jpg' %}">
+    <style>
+        input[type="number"] {
+            width: 60%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="{% url "home" %}"><img src="{% static 'image/logo5.jpg' %}" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="{% url "home" %}">Home</a></li>
+                <li><a href="{% url "shop" %}">Shop</a></li>
+                <li><a href="{% url "blog" %}">Blog</a></li>
+                <li><a href="{% url "about" %}">About</a></li>
+                <li><a href="{% url "contact" %}">Contact</a></li>
+                <li id="lg-bag"><a href="{% url "cart" %}" class="active"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                <li id="lg-bag"><a href="{% url "user" %}"><i class="fas fa-user"></i></a></li>
+                <h5>{{user_name}}</h5>
+                <a href="#" id="close"><i class="far fa-times-circle"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="page-header" class="about-header">
+        <h2>#let's_shop</h2>
+        <p>We are thankfull for your presence!</p>
+    </section>
+
+    {% if items %}
+    <section id="cart" class="section-p1">
+        {% for item in items %}
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Remove</td>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <form action="{% url 'delete_from_cart' %}" method="post">
+                        {% csrf_token %}
+                    <input type="hidden" name="product_id" class="product_id" value="{{ item.product_id }}">
+                    <td><button type="submit"><i class="fas fa-times-circle"></i></button></td>
+                    </form>
+                    <td><img class="profile_img" src="data:image/jpeg;base64,{{ item.image }}"></td>
+                    <td>{{ item.name }}</td>
+                    <td>₹ {{ item.price }} <input type="hidden" class="iprice" value="{{ item.price }}"></td>
+                <form action="{% url 'update_cart' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" class="product_id" value="{{ item.product_id }}">
+                    <td><input type="number" onchange="subtotal()" value="1" class="iquantity" min="1" name="quantity"></td>
+                    <td class="itotal"></td>
+                </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section id="cart-add" class="section-p1">
+        <div id="coupon">
+            <h3>Apply Coupon</h3>
+            <div>
+                <input type="text" name="" id="" placeholder="Enter your coupon">
+                <button class="normal">Apply</button>
+            </div>
+        </div>
+
+            <div id="subtotal">
+                <h3>Cart Totals</h3>
+                <table>
+                    <tr>
+                        <td>Cart Subtotal</td>
+                        <td id="cart_total"></td>
+                    </tr>
+                    <tr>
+                        <td>Shipping</td>
+                        <td id="Shipping">Free</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td id="bill"><strong></strong></td>
+                    </tr>
+                </table>
+                <button class="normal" type="submit">Proceed to checkout</button>
+                </form>
+            </div>
+    </section>
+    {% else %}
+        <center>
+        <h4 style="margin-left: 100px; margin-top: 50px;">No product Added.</h4>
+        </center>
+        {% endif %}
+    
+    <script>
+        var total = 0;
+        var iprice = document.getElementsByClassName("iprice");
+        var iquantity = document.getElementsByClassName("iquantity");
+        var itotal = document.getElementsByClassName("itotal");
+        var cart_total = document.getElementById("cart_total");
+        var bill = document.getElementById("bill");
+        var productid = document.getElementsByClassName("product_id");
+
+        function subtotal()
+        {
+            var items = [];
+            total = 0;
+            for(i=0;i<iprice.length;i++)
+            {
+                itotal[i].innerText = "₹ "+(iprice[i].value) * (iquantity[i].value);
+                total = total + (iprice[i].value) * (iquantity[i].value);
+                items.push({ id: (productid[i].value), quantity: (iquantity[i].value) });
+            }
+            cart_total.innerText = "₹ "+total;
+            bill.innerText = "₹ "+total;
+        }
+        subtotal();
+    </script>
+    
+</body>
+</html>

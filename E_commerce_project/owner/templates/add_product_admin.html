@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #088178;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+</head>
+<body>
+    <section id="header">
+        <a href="{% url "add_item" %}"><img src="{% static 'image/logo5.jpg' %}" class="logo" alt=""></a>
+        <h5>Admin Login</h5>
+        <div>
+            <ul id="navbar">
+                <li><a href="{% url "add_item" %}" class="active">Add Products</a></li>
+                <li><a href="{% url "view_items" %}">View Products</a></li>
+                <li><a href="{% url "view_orders" %}">View Orders</a></li>
+                <li><a href="{% url "logout1" %}">Logout</a></li>
+            </ul>
+        </div>
+    </section>
+    <div class="container">
+        <h3>Add Item</h3>
+        <br>
+        <br>
+        <form method="POST" action="{% url 'add_item' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" required></textarea><br>
+            <label for="quantity">Quantity:</label><br>
+            <input type="number" id="quantity" name="quantity" min="1" required><br>
+            <label for="star">Ratting:</label><br>
+            <input type="number" id="ratting" name="ratting" min="1" required><br>
+            <label for="price">Price:</label><br>
+            <input type="number" id="price" name="price" min="1" required><br>
+            <label for="photo">Photo:</label><br>
+            <input type="file" id="photo" name="photo" required><br>
+            <button type="submit">Add Item</button>
+        </form>
+    </div>
+</body>
+</html>

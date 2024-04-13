@@ -1,0 +1,148 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NecessaryStuff</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link rel="shortcut icon" href="{% static 'image/logo5.jpg' %}">
+</head>
+<body>
+    <section id="header">
+        <a href="{% url "home" %}"><img src="{% static 'image/logo5.jpg' %}" class="logo" alt=""></a>
+
+        <div>
+            <ul id="navbar">
+                <li><a href="{% url "home" %}">Home</a></li>
+                <li><a href="{% url "shop" %}">Shop</a></li>
+                <li><a href="{% url "blog" %}">Blog</a></li>
+                <li><a href="{% url "about" %}">About</a></li>
+                <li><a href="{% url "contact" %}" class="active">Contact</a></li>
+                <li id="lg-bag"><a href="{% url "cart" %}"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                <li id="lg-bag"><a href="{% url "user" %}"><i class="fas fa-user"></i></a></li>
+                <h5>{{user_name}}</h5>
+                <a href="#" id="close"><i class="far fa-times-circle"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="page-header" class="about-header">
+        <h2>#let's_talk</h2>
+        <p>LEAVE A MESSAGE. We love to hear from you!</p>
+    </section>
+
+    <section id="contact-details" class="section-p1">
+        <div class="details">
+            <span>GET IN TOUCH</span>
+            <h2>Visit one of our agency locations or contact us today</h2>
+            <h3>Head Office</h3>
+            <div>
+                <li>
+                    <i class="far fa-map"></i>
+                    <p>MIT Hostel BSF Campus Yelahanka</p>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <p>rutviksa18@gmail.com</p>
+                </li>
+                <li>
+                    <i class="fas fa-phone"></i>
+                    <p>harshsingh@gmail.com</p>
+                </li>
+                <li>
+                    <i class="fas fa-clock"></i>
+                    <p>Monday to Sunday: 9.00am to 16.pm</p>
+                </li>
+            </div>
+        </div>
+
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1942.7500251309002!2d77.5903959968777!3d13.130827223122829!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae19b4588bb303%3A0x73e330209efba53a!2sManipal%20Academy%20of%20Higher%20Education%2C%20Gate%203%2C%20Hostel%20Block!5e0!3m2!1sen!2sin!4v1708970715326!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section id="form-details" class="section-p1">
+        <form action="">
+            
+        </form>
+
+        <div class="people">
+            <div>
+                <img src="{% static 'image/people/Passport size photo.jpg' %}" alt="">
+                <p><span>Rutvik Jagtap</span> Chief Executive Officer <br> Phone: 7020827885 <br> Email: rutviksa18@gmail.com</p>
+            </div>
+            <div>
+                <img src="{% static 'image/people/2.png' %}" alt="">
+                <p><span>Harsh Singh</span> Chief Technical Officer <br> Phone: 7020827885 <br> Email: harshsingh@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext"> 
+        </div>
+        <div class="form">  
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <h4>Contact</h4>
+            <p><strong>Adress:</strong> MIT Hostel BSF Campus, Yelahanka, Bengaluru</p>
+            <p><strong>Phone:</strong> (+91) 7020827885</p>
+            <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="{% static 'image/pay/app.jpg' %}" alt="">
+                <img src="{% static 'image/pay/play.jpg' %}" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="{% static 'image/pay/pay.png' %}" alt="">
+        </div>
+
+        <div class="copyright">
+            <p>© 2024, Tech2 etc - RJ Mart</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NecessaryStuff</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link rel="shortcut icon" href="{% static 'image/logo5.jpg' %}">
+</head>
+<body>
+    <section id="header">
+        <a href="{% url "home" %}"><img src="{% static 'image/logo5.jpg' %}" class="logo" alt=""></a>
+
+        <div>
+            <ul id="navbar">
+                <li><a href="{% url "home" %}">Home</a></li>
+                <li><a href="{% url "shop" %}">Shop</a></li>
+                <li><a href="{% url "blog" %}" class="active">Blog</a></li>
+                <li><a href="{% url "about" %}">About</a></li>
+                <li><a href="{% url "contact" %}">Contact</a></li>
+                <li id="lg-bag"><a href="{% url "cart" %}"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                <li id="lg-bag"><a href="{% url "user" %}"><i class="fas fa-user"></i></a></li>
+                <h5>{{user_name}}</h5>
+                <a href="#" id="close"><i class="far fa-times-circle"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="page-header" class="blog-header">
+        <h2>#readmore</h2>
+        <p>Read all hacks about Groceries!</p>
+    </section>
+
+    <section id="blog">
+        <div class="blog-box">
+            <div class="blog-img">
+                <img src="{% static 'image/health.jpeg' %}" alt="">
+            </div>
+            <div class="blog-details">
+                <h4>Health and Wellness</h4>
+                <p>Discover tips for maintaining a healthy lifestyle, from nutritious recipes to effective workout routines, ensuring your well-being is prioritized every day.
+                </p>
+    
+            </div>
+           
+        </div>
+        <div class="blog-box">
+            <div class="blog-img">
+                <img src="{% static 'image/tech.jpg' %}" alt="">
+            </div>
+            <div class="blog-details">
+                <h4>Tech Trends and Innovations</h4>
+                <p>Stay ahead of the curve with the latest technological advancements and trends, exploring innovations that are revolutionizing industries and shaping the future.
+                </p>
+    
+            </div>
+            
+        </div>
+        <div class="blog-box">
+            <div class="blog-img">
+                <img src="{% static 'image/home.jpeg' %}" alt="">
+            </div>
+            <div class="blog-details">
+                <h4>Home Organization Hacks</h4>
+                <p>Uncover ingenious hacks and strategies to declutter and organize your living space, transforming chaos into tranquility with simple yet effective solutions.
+                </p>
+        
+            </div>
+            
+        </div>
+        <div class="blog-box">
+            <div class="blog-img">
+                <img src="{% static 'image/travel.jpeg' %}" alt="">
+            </div>
+            <div class="blog-details">
+                <h4>Travel Destinations Unveiled</h4>
+                <p>Embark on virtual adventures as we unveil captivating travel destinations worldwide, offering insights and inspiration for your next unforgettable journey.
+                </p>
+                
+            </div>
+            
+        </div>
+        <div class="blog-box">
+            <div class="blog-img">
+                <img src="{% static 'image/finance.webp' %}" alt="">
+            </div>
+            <div class="blog-details">
+                <h4>Financial Fitness Insights</h4>
+                <p>Gain valuable insights and practical tips to achieve financial fitness, empowering you to make informed decisions and secure a stable financial future.
+                </p>
+                
+            </div>
+            
+        </div>
+    </section>
+    
+
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext"> 
+        </div>
+        <div class="form">  
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <h4>Contact</h4>
+            <p><strong>Adress:</strong> MIT Hostel BSF Campus, Yelahanka, Bengaluru</p>
+            <p><strong>Phone:</strong> (+91) 7020827885</p>
+            <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="{% static 'image/pay/app.jpg' %}" alt="">
+                <img src="{% static 'image/pay/play.jpg' %}" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="{% static 'image/pay/pay.png' %}" alt="">
+        </div>
+
+        <div class="copyright">
+            <p>© 2024, Tech2 etc - RJ Mart</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
